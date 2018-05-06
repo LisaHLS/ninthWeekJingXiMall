@@ -1,0 +1,22 @@
+{
+  "id": "72a4ca26-b85a-0588-97ff-d40c8e7390a8",
+  "name": "damllQuiz",
+  "values": [
+    {
+      "enabled": true,
+      "key": "IP",
+      "value": "10.205.20.80  #将该地址修改为自己的本机公网IP",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "port",
+      "value": "8083",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1523516187958,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-04-17T09:01:36.600Z",
+  "_postman_exported_using": "Postman/5.5.2"
+}
