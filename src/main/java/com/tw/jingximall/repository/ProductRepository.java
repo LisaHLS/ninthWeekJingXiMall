@@ -22,7 +22,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     int update(Integer id, String name, String description, Integer price);
 
     //根据商品id查找商品
-    Product findProductById(Long id);
+    Product findProductById(Integer id);
 
     //查找所有商品
     List<Product> findAll();
