@@ -177,26 +177,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/products?name=方便面",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"products"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "方便面",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/products?name=方便面",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -231,32 +212,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/products?name=方便面&description=师",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"products"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "方便面",
-									"equals": true,
-									"description": ""
-								},
-								{
-									"key": "description",
-									"value": "师",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/products?name=方便面&description=师",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -316,27 +272,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/orders/1?orderStatus=paid",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"orders",
-								"1"
-							],
-							"query": [
-								{
-									"key": "orderStatus",
-									"value": "paid",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/orders/1?orderStatus=paid",
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -361,27 +297,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/orders/5?orderStatus=withdrawn",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"orders",
-								"5"
-							],
-							"query": [
-								{
-									"key": "orderStatus",
-									"value": "withdrawn",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/orders/5?orderStatus=withdrawn",
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -461,26 +377,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/orders?userId=1",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"orders"
-							],
-							"query": [
-								{
-									"key": "userId",
-									"value": "1",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/orders?userId=1",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -554,29 +451,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/logisticsRecords/1/orders/1?logisticsStatus=shipping",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"logisticsRecords",
-								"1",
-								"orders",
-								"1"
-							],
-							"query": [
-								{
-									"key": "logisticsStatus",
-									"value": "shipping",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/logisticsRecords/1/orders/1?logisticsStatus=shipping",
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -601,29 +476,7 @@
 						}
 					],
 					"request": {
-						"url": {
-							"raw": "http://{{IP}}:{{port}}/logisticsRecords/1/orders/1?logisticsStatus=signed",
-							"protocol": "http",
-							"IP": [
-								"{{IP}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"logisticsRecords",
-								"1",
-								"orders",
-								"1"
-							],
-							"query": [
-								{
-									"key": "logisticsStatus",
-									"value": "signed",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
-						},
+						"url": "http://{{IP}}:{{port}}/logisticsRecords/1/orders/1?logisticsStatus=signed",
 						"method": "PUT",
 						"header": [],
 						"body": {
