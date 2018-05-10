@@ -70,7 +70,6 @@ public class ProductController {
     }
 
     @GetMapping
-    @ResponseBody
     public List<Product> getProducts(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "description", required = false) String description) {
 
         if(!StringUtils.isEmpty(name) && !StringUtils.isEmpty(description)) return productRepository.findByNameAndDescriptionContaining(name, description);
