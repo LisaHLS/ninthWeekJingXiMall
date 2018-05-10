@@ -16,11 +16,11 @@ public interface LogisticsRecordRepository extends JpaRepository<LogisticsRecord
 
     @Modifying
     @Transactional
-    @Query("update LogisticsRecord l set l.logisticsStatus = 'shipping', l.outboundTime = ?3 where l.id = ?1 and l.orderId = ?2")
+    @Query("update LogisticsRecord set logisticsStatus = 'shipping', outboundTime = ?3 where id = ?1 and orderId = ?2")
     int updateLogisticsStatusWithShipping(Integer id, Integer orderId, String outboundTime);
 
     @Modifying
     @Transactional
-    @Query("update LogisticsRecord l set l.logisticsStatus = 'signed', l.signedTime = ?3 where l.id = ?1 and l.orderId = ?2")
+    @Query("update LogisticsRecord set logisticsStatus = 'signed', signedTime = ?3 where id = ?1 and orderId = ?2")
     int updateLogisticsStatusWithSigned(Integer id, Integer orderId, String signedTime);
 }
