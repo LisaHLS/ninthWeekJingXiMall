@@ -279,7 +279,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": "### API功能：\n- 支付订单\n### 输入：\n```\n{\n   \"status\":\"paid\"\n}\n```\n### 输出\n```\n{\n\tid:\"1\",\n\ttotalPrice:\"230\",\n\tstatus:\"paid\",\n\tcreateTime:\"2018-4-13\",\n\tfinishTime:\"\",\n\tpaidTime:\"2018-4-14\",\n\twithdrawnTime:\"\"\n\n}\n```"
+						"description": "### API功能：\n- 支付订单\n### 输入：\n```\n{\n   \"status\":\"paid\"\n}\n```\n### 输出\n```\n{\n\tid:\"1\",\n\ttotalPrice:\"230\",\n\tstatus:\"paid\",\n\tcreateTime:\"2018-04-13\",\n\tfinishTime:\"\",\n\tpaidTime:\"2018-05-10\",\n\twithdrawnTime:\"\"\n\n}\n```"
 					},
 					"response": []
 				},
@@ -304,7 +304,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": "### API功能：\n- 撤销订单\n### 输入：\n```\n{\n   \"status\":\"withDrawn\"\n}\n```\n### 输出\n```\n{\n\tid:\"1\",\n\ttotalPrice:\"230\",\n\tstatus:\"withDrawn\",\n\tcreateTime:\"2018-4-13\",\n\tfinishTime:\"\",\n\tpaidTime:\"2018-4-14\",\n\twithdrawnTime:\"2018-4-14\"\n\n}\n```"
+						"description": "### API功能：\n- 撤销订单\n### 输入：\n```\n{\n   \"status\":\"withDrawn\"\n}\n```\n### 输出\n```\n{\n\tid:\"1\",\n\ttotalPrice:\"230\",\n\tstatus:\"withDrawn\",\n\tcreateTime:\"2018-04-13\",\n\tfinishTime:\"\",\n\tpaidTime:\"2018-4-14\",\n\twithdrawnTime:\"2018-4-14\"\n\n}\n```"
 					},
 					"response": []
 				},
