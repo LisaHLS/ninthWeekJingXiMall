@@ -1,5 +1,6 @@
 package com.tw.jingximall.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,8 +31,9 @@ public class LogisticsRecord {
 
     private String deliveryMan;
 
-    @OneToOne(targetEntity = Order.class)
+    @JsonBackReference
+    @OneToOne(targetEntity = OrderInfo.class)
     @JoinColumn(name = "orderId", insertable = false, updatable = false)
-    private Order order;
+    private OrderInfo order;
 
 }
