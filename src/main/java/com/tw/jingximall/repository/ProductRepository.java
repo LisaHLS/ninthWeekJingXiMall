@@ -11,10 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    //创建新商品
-    @Transactional
-    Product save(Product product);
-
     //修改商品信息
     @Transactional
     @Modifying
