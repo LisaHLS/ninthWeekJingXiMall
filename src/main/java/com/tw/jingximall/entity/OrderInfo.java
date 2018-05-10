@@ -1,5 +1,6 @@
 package com.tw.jingximall.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class OrderInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +39,13 @@ public class Order {
 
     private String withdrawnTime;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "orderItem")
-    private Set<ProductSnap> orderItemList = new HashSet<>();
+    private Set<ProductSnap> purchaseItemList = new HashSet<>();
 
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "order")
     private LogisticsRecord logisticsInformation;
-
-
-
 
 
 }
