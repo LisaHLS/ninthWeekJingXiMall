@@ -18,13 +18,13 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
     //修改库存数量
     @Modifying
     @Transactional
-    @Query("update Inventory set count = count + ?2 where id = ?1")
+    @Query("update Inventory i set i.count = i.count + ?2 where i.id = ?1")
     int updateCountById(Integer productId, Integer count);
 
     //修改锁定库存数量
     @Modifying
     @Transactional
-    @Query("update Inventory set lockedCount = lockedCount + ?2 where id = ?1")
+    @Query("update Inventory i set i.lockedCount = i.lockedCount + ?2 where i.id = ?1")
     int updateLockedCount(Integer productId, Integer lockedCount);
 
     //根据商品id查找库存
