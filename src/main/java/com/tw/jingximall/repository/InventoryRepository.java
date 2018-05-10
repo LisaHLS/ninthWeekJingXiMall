@@ -11,28 +11,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
 
-    //创建库存
     @Modifying
     @Transactional
     @Query(value = "insert into Inventory(id,count,lockedCount) values(?1,0,0)",nativeQuery = true)
     int saveByProductId(Integer id);
 
-    //修改库存数量
     @Modifying
     @Transactional
     @Query("update Inventory i set i.count = i.count + ?2 where i.id = ?1")
     int updateCountById(Integer productId, Integer count);
 
-    //修改锁定库存数量
     @Modifying
     @Transactional
     @Query("update Inventory i set i.lockedCount = i.lockedCount + ?2 where i.id = ?1")
     int updateLockedCount(Integer productId, Integer lockedCount);
 
-    //根据商品id查找库存
     Inventory findInventoryById(Integer productId);
 
-    //查找所有库存
     List<Inventory> findAll();
 
 }
