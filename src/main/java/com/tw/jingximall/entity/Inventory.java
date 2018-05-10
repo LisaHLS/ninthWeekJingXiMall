@@ -1,5 +1,6 @@
 package com.tw.jingximall.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,6 +22,7 @@ public class Inventory {
 
     private Integer lockedCount;
 
+    @JsonBackReference
     @OneToOne(targetEntity = Product.class)
     @JoinColumn(name = "id", insertable = false, updatable = false)
     private Product product;
