@@ -297,7 +297,7 @@
 						}
 					],
 					"request": {
-						"url": "http://{{IP}}:{{port}}/orders/5?orderStatus=withdrawn",
+						"url": "http://{{IP}}:{{port}}/orders/1?orderStatus=withdrawn",
 						"method": "PUT",
 						"header": [],
 						"body": {
