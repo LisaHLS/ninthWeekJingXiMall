@@ -40,11 +40,11 @@ public class OrderInfo {
     private String withdrawnTime;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "orderItem")
-    private Set<ProductSnap> purchaseItemList = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderItem")
+    private Set<ProductSnap> purchaseItemList;
 
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "order")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "order")
     private LogisticsRecord logisticsInformation;
 
 
