@@ -39,12 +39,12 @@ public class ProductController {
             return new ResponseEntity<String>("Input product invalid!", HttpStatus.BAD_REQUEST);
         }
 
-        Integer id = productRepository.saveAndFlush(product).getId();
-        URI location = URI.create("http://192.168.56.1:8083/products/" + id);
+        Product savedProduct = productRepository.saveAndFlush(product);
+        URI location = URI.create("http://192.168.56.1:8083/products/" + savedProduct.getId());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(location);
-        inventoryRepository.saveByProductId(id);
-        return new ResponseEntity<Product>(productRepository.findProductById(id), responseHeaders, HttpStatus.CREATED);
+        inventoryRepository.saveByProductId(savedProduct.getId());
+        return new ResponseEntity<Product>(savedProduct, responseHeaders, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
