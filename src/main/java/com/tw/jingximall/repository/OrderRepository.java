@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<OrderInfo, Integer> {
 
-    OrderInfo findOrderById(Integer id);
+    OrderInfo findOrderInfoById(Integer id);
 
     @Modifying
     @Transactional
@@ -28,5 +28,5 @@ public interface OrderRepository extends JpaRepository<OrderInfo, Integer> {
     @Query("update OrderInfo set status = ?2, finishTime = ?3 where id = ?1")
     int updateOrderStatusToFinished(Integer id, String status, String finishTime);
 
-    List<OrderInfo> findOrderByUserId(Integer userId);
+    List<OrderInfo> findOrderInfoByUserId(Integer userId);
 }

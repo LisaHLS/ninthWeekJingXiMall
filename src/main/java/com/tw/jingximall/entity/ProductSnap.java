@@ -1,7 +1,9 @@
 package com.tw.jingximall.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,17 +36,17 @@ public class ProductSnap {
     private Integer purchaseCount;
 
     @JsonIgnore
-    @ManyToOne(targetEntity = OrderInfo.class)
+    @ManyToOne(targetEntity = OrderInfo.class,cascade= CascadeType.REFRESH,optional=false,fetch= FetchType.LAZY)
     @JoinColumn(name ="orderId", insertable = false, updatable = false)
     private OrderInfo orderItem;
 
-    public ProductSnap(Integer productId, Integer orderId, String productName,
-        String productDescription, Integer purchasePrice, Integer purchaseCount) {
-        this.productId = productId;
-        this.orderId = orderId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.purchasePrice = purchasePrice;
-        this.purchaseCount = purchaseCount;
-    }
+//    public ProductSnap(Integer productId, Integer orderId, String productName,
+//        String productDescription, Integer purchasePrice, Integer purchaseCount) {
+//        this.productId = productId;
+//        this.orderId = orderId;
+//        this.productName = productName;
+//        this.productDescription = productDescription;
+//        this.purchasePrice = purchasePrice;
+//        this.purchaseCount = purchaseCount;
+//    }
 }

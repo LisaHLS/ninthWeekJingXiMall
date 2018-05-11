@@ -1,6 +1,7 @@
 package com.tw.jingximall.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,7 @@ public class LogisticsRecord {
     private String deliveryMan;
 
     @JsonIgnore
-    @OneToOne(targetEntity = OrderInfo.class)
+    @OneToOne(targetEntity = OrderInfo.class,cascade= CascadeType.REFRESH,optional=false)
     @JoinColumn(name = "orderId", insertable = false, updatable = false)
     private OrderInfo order;
 
