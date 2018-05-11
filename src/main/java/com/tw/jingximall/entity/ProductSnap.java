@@ -1,6 +1,6 @@
 package com.tw.jingximall.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +33,7 @@ public class ProductSnap {
 
     private Integer purchaseCount;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToOne(targetEntity = OrderInfo.class)
     @JoinColumn(name ="orderId", insertable = false, updatable = false)
     private OrderInfo orderItem;
