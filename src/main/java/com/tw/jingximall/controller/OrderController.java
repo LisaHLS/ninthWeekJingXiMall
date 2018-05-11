@@ -123,13 +123,6 @@ public class OrderController {
         if (orderStatus.equals("withdrawn")) orderRepository.updateOrderStatusToWithdrawn(id, orderStatus, nowDate);
     }
 
-    private Boolean isThisOrderAlreadyBeenPaidOrWithdrawnOrFinished(OrderInfo order, String orderStatus) {
-
-        final boolean isBeenPaidOrWithdrawnOrFinished = order.getStatus().equals("paid") || order.getStatus().equals("withdrawn") || order.getStatus().equals("finished");
-        return (!orderStatus.equals("paid") || !isBeenPaidOrWithdrawnOrFinished) && (!orderStatus.equals("withdrawn") || !isBeenPaidOrWithdrawnOrFinished);
-
-    }
-
     private HttpHeaders setLocationInHeaders(Integer orderId) {
         URI location = URI.create("http://192.168.56.1:8083/orders/" + orderId);
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -179,7 +172,7 @@ public class OrderController {
         logisticsRecord.setLogisticsStatus("readyToShip");
         logisticsRecord.setOutboundTime("null");
         logisticsRecord.setSignedTime("null");
-        logisticsRecord.setDeliveryMan("");
+        logisticsRecord.setDeliveryMan("李师傅");
         logisticsRecordRepository.save(logisticsRecord);
     }
 
