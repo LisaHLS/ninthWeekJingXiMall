@@ -1,5 +1,6 @@
 package com.tw.jingximall.controller;
 
+import com.tw.jingximall.entity.Inventory;
 import com.tw.jingximall.entity.Product;
 import com.tw.jingximall.repository.InventoryRepository;
 import com.tw.jingximall.repository.ProductRepository;
@@ -39,11 +40,15 @@ public class ProductController {
             return new ResponseEntity<String>("Input product invalid!", HttpStatus.BAD_REQUEST);
         }
 
+        Inventory inventory = new Inventory();
+        inventory.setCount(0);
+        inventory.setLockedCount(0);
+        product.setInventory(inventory);
         Product savedProduct = productRepository.saveAndFlush(product);
+
         URI location = URI.create("http://192.168.56.1:8083/products/" + savedProduct.getId());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(location);
-        inventoryRepository.saveByProductId(savedProduct.getId());
         return new ResponseEntity<Product>(savedProduct, responseHeaders, HttpStatus.CREATED);
     }
 

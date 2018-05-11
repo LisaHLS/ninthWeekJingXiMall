@@ -29,6 +29,6 @@ public class Product {
     private Integer price;
 
     @JsonManagedReference
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "product")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "product")
     private Inventory inventory;
 }

@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `Product` (
 
 
 CREATE TABLE IF NOT EXISTS `Inventory` (
-  `id` int(11) NOT NULL ,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `count` int(11) NOT NULL DEFAULT 0,
   `lockedCount` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
