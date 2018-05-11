@@ -1,6 +1,6 @@
 package com.tw.jingximall.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -39,11 +39,11 @@ public class OrderInfo {
 
     private String withdrawnTime;
 
-    @JsonManagedReference
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "orderItem")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "orderItem")
     private Set<ProductSnap> purchaseItemList = new HashSet<>();
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "order")
     private LogisticsRecord logisticsInformation;
 
