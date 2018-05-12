@@ -2,6 +2,8 @@ package com.tw.jingximall.controller;
 
 import com.tw.jingximall.entity.LogisticsRecord;
 import com.tw.jingximall.entity.ProductSnap;
+import com.tw.jingximall.exception.NotFoundException;
+import com.tw.jingximall.exception.StatusConflictException;
 import com.tw.jingximall.repository.InventoryRepository;
 import com.tw.jingximall.repository.LogisticsRecordRepository;
 import com.tw.jingximall.repository.OrderRepository;
@@ -12,11 +14,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,26 +39,27 @@ public class LogisticsRecordController {
     @Autowired
     private InventoryRepository inventoryRepository;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getLogisticsRecordById(@PathVariable Integer id) {
+    @GetMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public LogisticsRecord getLogisticsRecordById(@PathVariable Integer id) {
 
         LogisticsRecord logisticsRecord = logisticsRecordRepository.findLogisticsRecordById(id);
-        if (logisticsRecord == null) return new ResponseEntity<String>("the logisticsRecord with this id do not exist.", HttpStatus.NOT_FOUND);
-
-        return new ResponseEntity<LogisticsRecord>(logisticsRecord, HttpStatus.OK);
+        if (logisticsRecord == null) throw new NotFoundException("logisticsRecord", id);
+        return logisticsRecord;
     }
 
     @RequestMapping(value = "/{id}/orders/{orderId}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateOrderStatus(@PathVariable Integer id, @PathVariable Integer orderId, @RequestParam String logisticsStatus) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateLogisticsRecordStatus(@PathVariable Integer id, @PathVariable Integer orderId, @RequestParam String logisticsStatus) {
 
         LogisticsRecord logisticsRecord = logisticsRecordRepository.findLogisticsRecordByIdAndOrderId(id, orderId);
 
-        if (logisticsRecord == null) return new ResponseEntity<>("the logisticsRecord with this id and orderId do not exist.", HttpStatus.NOT_FOUND);
+        if (logisticsRecord == null) throw new NotFoundException("logisticsRecord", id);
 
         boolean canShip = logisticsRecord.getLogisticsStatus().equals("readyToShip") && logisticsStatus.equals("shipping");
         boolean canSign = logisticsRecord.getLogisticsStatus().equals("shipping") && logisticsStatus.equals("signed");
 
-        if(!canShip && !canSign) return new ResponseEntity<>("can't do this operation, please check logisticsStatus", HttpStatus.BAD_REQUEST);
+        if(!canShip && !canSign) throw new StatusConflictException("order", id, logisticsRecord.getLogisticsStatus());
 
         String nowDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         if(canShip) logisticsRecordRepository.updateLogisticsStatusWithShipping(id, orderId, nowDate);
@@ -64,8 +68,6 @@ public class LogisticsRecordController {
             logisticsRecordRepository.updateLogisticsStatusWithSigned(id, orderId, nowDate);
             updateOrderStatusAndInventories(orderId, nowDate);
         }
-
-        return new ResponseEntity<>("success", HttpStatus.NO_CONTENT);
     }
 
     private void updateOrderStatusAndInventories(Integer orderId, String nowDate) {

@@ -35,8 +35,16 @@ public class LogisticsRecord {
     private String deliveryMan;
 
     @JsonIgnore
-    @OneToOne(targetEntity = OrderInfo.class,cascade= CascadeType.REFRESH,optional=false)
+    @OneToOne(targetEntity = OrderInfo.class)
     @JoinColumn(name = "orderId", insertable = false, updatable = false)
     private OrderInfo order;
 
+    public LogisticsRecord(Integer orderId, String logisticsStatus, String outboundTime,
+        String signedTime, String deliveryMan) {
+        this.orderId = orderId;
+        this.logisticsStatus = logisticsStatus;
+        this.outboundTime = outboundTime;
+        this.signedTime = signedTime;
+        this.deliveryMan = deliveryMan;
+    }
 }
